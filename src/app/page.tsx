@@ -7,6 +7,7 @@ import { ThemeSupa } from "@supabase/auth-ui-shared";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
+  const [showConfirmMsg, setShowConfirmMsg] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -39,6 +40,11 @@ export default function Home() {
           </p>
         </div>
         <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-200">
+          {showConfirmMsg ? (
+            <div className="text-green-600 text-center font-medium mb-4">
+              Check your email for the confirmation link to verify your account.
+            </div>
+          ) : null}
           <Auth
             supabaseClient={supabase}
             appearance={{
@@ -54,6 +60,23 @@ export default function Home() {
             }}
             providers={["google"]}
             view="sign_in"
+            // Listen for sign up events to show confirmation message
+            // @ts-ignore
+            onViewChange={async (view) => {
+              if (view === "sign_up") {
+                setShowConfirmMsg(false);
+              }
+            }}
+            // @ts-ignore
+            onAuthStateChange={async (event, session) => {
+              if (
+                event === "USER_SIGNED_UP" &&
+                session?.user?.email &&
+                !session.user.email_confirmed_at
+              ) {
+                setShowConfirmMsg(true);
+              }
+            }}
           />
           <p className="text-xs text-gray-500 text-center mt-4">
             Powered by Supabase + Next.js

@@ -16,7 +16,48 @@ This is a simple bookmark manager built with Next.js, Supabase, and Tailwind CSS
 - Supabase (Auth, Database, Realtime)
 - Tailwind CSS
 
-## Deployment
+## How to Test the App (Step-by-Step)
+
+1. **Sign Up with Google**
+
+- Click "Sign in with Google" on the login page.
+- Choose a Google account to sign up.
+- If this is your first time, a new account will be created in Supabase.
+
+2. **Email Verification (if enabled in Supabase)**
+
+- Check your email for a verification link (if required by your Supabase Auth settings).
+- Click the link to verify your account.
+
+3. **Access the Dashboard**
+
+- After login, you are redirected to the dashboard.
+- You should see your personal list of bookmarks (empty if new account).
+
+4. **Add a Bookmark**
+
+- Enter a title and URL in the add form.
+- Click "Add". The new bookmark appears instantly in your list.
+
+5. **Real-time Sync**
+
+- Open the dashboard in two browser tabs (same account).
+- Add or delete a bookmark in one tab; changes appear in real-time in the other tab.
+
+6. **Delete a Bookmark**
+
+- Click the delete button next to a bookmark. It is removed from your list.
+
+7. **Privacy Check**
+
+- Log in with a different Google account.
+- You should not see bookmarks from other users.
+
+8. **Logout**
+
+- Use the logout button to end your session.
+
+---
 
 - **Live Vercel URL:** [YOUR_VERCEL_URL_HERE]
 

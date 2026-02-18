@@ -40,9 +40,16 @@ export default function Dashboard() {
 
     initializeUser();
 
+    // Listen for auth state changes and update user immediately
+    // @ts-expect-error
     const { data: authListener } = supabase.auth.onAuthStateChange(
       (event, session) => {
-        if (!session) router.push("/");
+        if (!session) {
+          router.push("/");
+          setUser(null);
+        } else {
+          setUser(session.user);
+        }
       },
     );
 
@@ -64,6 +71,7 @@ export default function Dashboard() {
       setBookmarks(data || []);
     };
 
+    // @ts-expect-error
     const channel = supabase
       .channel("bookmarks")
       .on(
@@ -91,10 +99,26 @@ export default function Dashboard() {
     setTitle("");
     setUrl("");
     setLoading(false);
+    // Immediately fetch bookmarks after add
+    const { data } = await supabase
+      .from("bookmarks")
+      .select("*")
+      .eq("user_id", user.id)
+      .order("created_at", { ascending: false });
+    setBookmarks(data || []);
   };
 
   const deleteBookmark = async (id: string) => {
     await supabase.from("bookmarks").delete().eq("id", id);
+    // Immediately fetch bookmarks after delete
+    if (user) {
+      const { data } = await supabase
+        .from("bookmarks")
+        .select("*")
+        .eq("user_id", user.id)
+        .order("created_at", { ascending: false });
+      setBookmarks(data || []);
+    }
   };
 
   const handleSignOut = async () => {
