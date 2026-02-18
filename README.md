@@ -81,7 +81,7 @@ This is a simple bookmark manager built with Next.js, Supabase, and Tailwind CSS
 
 ---
 
-- **Live Vercel URL:** [YOUR_VERCEL_URL_HERE]
+- **Live Vercel URL:** https://smart-bookmark-app-tau-seven.vercel.app/
 
 ## Problems & Solutions
 
