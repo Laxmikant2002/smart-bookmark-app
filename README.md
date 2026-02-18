@@ -16,7 +16,29 @@ This is a simple bookmark manager built with Next.js, Supabase, and Tailwind CSS
 - Supabase (Auth, Database, Realtime)
 - Tailwind CSS
 
-## How to Test the App (Step-by-Step)
+## Supabase Realtime Limitations & Workarounds
+
+**Supabase Free Tier Limitations:**
+
+- Realtime (WebSocket) connections may be restricted or unreliable on the free plan.
+- Advanced features (high concurrency, IPv4 direct connection) are not available.
+- If connection limits are exceeded, WebSocket errors may occur.
+
+**Workarounds & Fallbacks:**
+
+1. For reliable Realtime, upgrade to a paid Supabase plan.
+2. For basic testing, keep usage low (few users/tabs) and close unused sessions.
+3. Manual refresh: If Realtime fails, users can refresh or perform actions to see updates.
+4. Fallback logic: The app always fetches bookmarks after add/delete, so updates are visible even if Realtime fails.
+5. Monitor usage in Supabase dashboard; upgrade if limits are consistently hit.
+
+**Summary:**
+
+- Production apps should use a paid plan for guaranteed Realtime.
+- Free tier is suitable for demos and testing, but Realtime may be unreliable.
+- Authentication and CRUD operations work regardless of Realtime status.
+
+---
 
 1. **Sign Up with Google**
 

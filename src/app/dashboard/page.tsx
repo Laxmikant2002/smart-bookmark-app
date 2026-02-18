@@ -41,7 +41,7 @@ export default function Dashboard() {
     initializeUser();
 
     // Listen for auth state changes and update user immediately
-    // @ts-expect-error
+    // No ts-expect-error needed: Supabase onAuthStateChange is correctly typed
     const { data: authListener } = supabase.auth.onAuthStateChange(
       (event, session) => {
         if (!session) {
@@ -71,7 +71,7 @@ export default function Dashboard() {
       setBookmarks(data || []);
     };
 
-    // @ts-expect-error
+    // No ts-expect-error needed: Supabase channel is correctly typed
     const channel = supabase
       .channel("bookmarks")
       .on(
