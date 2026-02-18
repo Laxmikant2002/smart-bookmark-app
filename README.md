@@ -19,7 +19,6 @@ This is a simple bookmark manager built with Next.js, Supabase, and Tailwind CSS
 ## Deployment
 
 - **Live Vercel URL:** [YOUR_VERCEL_URL_HERE]
-- **GitHub Repo:** [YOUR_GITHUB_REPO_URL_HERE]
 
 ## Problems & Solutions
 
