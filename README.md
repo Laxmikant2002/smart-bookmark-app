@@ -1,16 +1,34 @@
-# Smart Bookmark App ✨
+# Smart Bookmark App
 
-A modern, secure bookmark manager built with Next.js and Supabase. Features Google OAuth authentication, real-time sync, and private bookmarks per user.
+This is a simple bookmark manager built with Next.js, Supabase, and Tailwind CSS.
 
 ## Features
 
-✅ **Google OAuth Authentication** - Simple one-click sign-in via Supabase Auth  
-✅ **Private Bookmarks** - Each user's bookmarks are completely private (Row-Level Security)  
-✅ **Real-time Updates** - Changes appear instantly across all devices/tabs  
-✅ **Modern UI** - Clean, light theme with responsive design  
-✅ **Type-safe** - Built with TypeScript for better code quality
+- Google OAuth login (no email/password)
+- Add bookmarks (URL + title)
+- Bookmarks are private to each user
+- Real-time updates across tabs (Supabase Realtime)
+- Delete your own bookmarks
 
 ## Tech Stack
+
+- Next.js (App Router)
+- Supabase (Auth, Database, Realtime)
+- Tailwind CSS
+
+## Deployment
+
+- **Live Vercel URL:** [YOUR_VERCEL_URL_HERE]
+- **GitHub Repo:** [YOUR_GITHUB_REPO_URL_HERE]
+
+## Problems & Solutions
+
+- **Google OAuth setup:** Configured Supabase Auth for Google provider, set up environment variables in Vercel and Supabase dashboard.
+- **Realtime updates:** Used Supabase Realtime to listen for changes in the bookmarks table and update the UI instantly across tabs.
+- **Private bookmarks:** Bookmarks are filtered by user ID in Supabase queries, ensuring privacy.
+- **Styling:** Used Tailwind CSS for quick, responsive UI.
+
+Replace the placeholders above with your actual Vercel and GitHub URLs.
 
 - **Frontend**: Next.js 14 (App Router), React, TypeScript, Tailwind CSS
 - **Backend**: Supabase (PostgreSQL + Real-time subscriptions)
